@@ -72,7 +72,7 @@
 <button id="yesBtn">YES 💖</button>
 <button id="noBtn">NO 😜</button>
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic" autoplay loop muted>
     <source src="song.mp3" type="audio/mpeg">
 </audio>
 
@@ -89,21 +89,18 @@
         noBtn.style.top = y + "px";
     });
 
-    // YES button click
-   yesBtn.addEventListener("click", function() {
+yesBtn.addEventListener("click", function() {
 
+    music.muted = false;  // unmute after interaction
     music.play();
 
-    setTimeout(() => {
-        document.body.innerHTML = `
-            <h1 style="margin-top:200px;font-size:50px;">
-                Yaaaaay ❤️<br> 
-                I Love You So Much 😍💍
-            </h1>
-        `;
-    }, 300);
+    document.querySelector("h1").innerHTML =
+        "Yaaaaay ❤️<br> Hurrayyyy!  ❤️ I knew it 😍😍😍";
 
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
 });
+
 
     // Floating Hearts Generator
     function createHeart() {
